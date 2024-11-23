@@ -42,10 +42,10 @@ if __name__ == '__main__':
     # load test image
     test_image = normalize_image(np.array(Image.open(image_path).resize((256, 256), Image.BICUBIC)))
     # test_image = normalize_image(misc.imresize(misc.imread(image_path), size=(256, 256), interp='cubic'))
-    print(test_image)
+    # print(test_image)
     real_image = normalize_image(np.array(Image.open(gt_image_path).resize((256, 256), Image.BICUBIC)))
     # real_image = normalize_image(misc.imresize(misc.imread(gt_image_path), size=(256, 256), interp='cubic'))
-    print(real_image)
+    # print(real_image)
     test_image_np = np.empty(shape=[1, 256, 256, 3], dtype=np.float32)
     test_image_np[0, :, :, :] = test_image
     test_image_tf = tf.convert_to_tensor(test_image_np)
