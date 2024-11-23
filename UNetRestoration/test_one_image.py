@@ -33,9 +33,11 @@ def normalize_image(x):
 
 if __name__ == '__main__':
     # underwater image
-    image_u = tf.placeholder(dtype=tf.float32, shape=[1, 256, 256, 3], name='image_u')
+    image_u = tf.Variable(tf.zeros([1, 256, 256, 3], dtype=tf.float32), name='image_u')
+    # image_u = tf.placeholder(dtype=tf.float32, shape=[1, 256, 256, 3], name='image_u')
     # correct image
-    image_r = tf.placeholder(dtype=tf.float32, shape=[1, 256, 256, 3], name='image_r')
+    image_r = tf.Variable(tf.zeros([1, 256, 256, 3], dtype=tf.float32), name='image_r')
+    # image_r = tf.placeholder(dtype=tf.float32, shape=[1, 256, 256, 3], name='image_r')
     # load test image
     test_image = normalize_image(misc.imresize(misc.imread(image_path), size=(256, 256), interp='cubic'))
     print(test_image)
