@@ -15,9 +15,9 @@ os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 from unet_model import UNet
 
 
-image_path = './test/test_one/003744.jpg'
-gt_image_path = './test/pro_003744.jpg'
-ckpt_path = './checkpoints/'
+image_path = '/kaggle/input/underwater321/Attachment 2/test_002.png'
+gt_image_path = '/kaggle/input/underwater321/Attachment 2/test_002.png'
+ckpt_path = '/kaggle/working/ckpt/unet_ckpt/WaterType1'
 
 
 def normalize_image(x):
