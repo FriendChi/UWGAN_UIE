@@ -4,7 +4,8 @@ U-Net implementation of test phase
 Evaluation mode or Test mode
 
 """
-
+from PIL import Image
+import numpy as np
 import tensorflow as tf
 import numpy as np
 from scipy import misc
@@ -39,9 +40,11 @@ if __name__ == '__main__':
     image_r = tf.Variable(tf.zeros([1, 256, 256, 3], dtype=tf.float32), name='image_r')
     # image_r = tf.placeholder(dtype=tf.float32, shape=[1, 256, 256, 3], name='image_r')
     # load test image
-    test_image = normalize_image(misc.imresize(misc.imread(image_path), size=(256, 256), interp='cubic'))
+    test_image = normalize_image(np.array(Image.open(image_path).resize((256, 256), Image.BICUBIC)))
+    # test_image = normalize_image(misc.imresize(misc.imread(image_path), size=(256, 256), interp='cubic'))
     print(test_image)
-    real_image = normalize_image(misc.imresize(misc.imread(gt_image_path), size=(256, 256), interp='cubic'))
+    real_image = normalize_image(np.array(Image.open(gt_image_path).resize((256, 256), Image.BICUBIC)))
+    # real_image = normalize_image(misc.imresize(misc.imread(gt_image_path), size=(256, 256), interp='cubic'))
     print(real_image)
     test_image_np = np.empty(shape=[1, 256, 256, 3], dtype=np.float32)
     test_image_np[0, :, :, :] = test_image
